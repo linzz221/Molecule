@@ -20,7 +20,7 @@ namespace mole::intor {
 		basisjson.Parse(basis_str.c_str());
 
 		string funtype;
-		int l, spdf_size;
+		int spdf_size;
 		libint2::svector<double> exponents;
 		libint2::svector<double> coeff_temp;
 		libint2::svector<libint2::Shell::Contraction> contractions;

@@ -13,7 +13,7 @@ namespace mole::intor {
 		for (ll s1 = 0; s1 < env.nshell; ++s1) {
 			for (ll s2 = 0; s2 <= s1; ++s2) {
 				eng.compute(env.shells[s1], env.shells[s2]);
-				auto int_data = eng_result[0];
+				const auto* int_data = eng_result[0];
 
 				auto s1_start = bas_buffer[s1];
 				auto s2_start = bas_buffer[s2];

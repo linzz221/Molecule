@@ -12,11 +12,6 @@ namespace mole {
 
 namespace mole::intor {
 
-	struct Libint_guard {
-		Libint_guard() { libint2::initialize(); }
-		~Libint_guard() { libint2::finalize(); }
-	};
-
 	class int1e {
 	using ll = long long;
 

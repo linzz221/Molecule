@@ -12,6 +12,11 @@ namespace mole::intor {
 	using std::string;
 	using std::vector;
 
+	struct Libint_guard {
+		Libint_guard() { libint2::initialize(); }
+		~Libint_guard() { libint2::finalize(); }
+	};
+
 	class basisenv {
 	public:
 		long long nshell = 0;
@@ -24,12 +29,13 @@ namespace mole::intor {
 		basisenv() = default;
 		~basisenv() = default;
 		basisenv(const string& basis, vector<mole::Atom> atoms);
+		void show_data() const;
 
+	private:
 		size_t calc_max_nprim() const;
 		int calc_max_l() const;
 		void calc_shell2bf();
 
-		void show_data() const;
 	};
 }
 

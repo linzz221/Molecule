@@ -69,24 +69,29 @@ namespace mole {
 		return result;
 	}
 
-
 	math::Mat2d Mol::intor_1e(const c_int1e need) {
 
 		intor::Libint_guard libguard;
 
 		switch (need) {
 		case c_int1e::overlap: {
-			return in_intor.calc_other_1e(c_int1e::overlap, intor_env);
+			return in_intor_1e.calc_other_1e(c_int1e::overlap, intor_env);
 		}
 		case c_int1e::kinetic: {
-			return in_intor.calc_other_1e(c_int1e::kinetic, intor_env);
+			return in_intor_1e.calc_other_1e(c_int1e::kinetic, intor_env);
 		}
 		case c_int1e::nuclear: {
-			return in_intor.calc_nuclear(intor_env, make_nuc_int_need());
+			return in_intor_1e.calc_nuclear(intor_env, make_nuc_int_need());
 		}
 		default:
 			throw std::invalid_argument("Invalid integral type");
 		}
+	}
+
+	intor::int2e Mol::intor_2e() const {
+		intor::int2e result(intor_env.nbasis);
+		result.create_int2e_inmem(intor_env);
+		return result;
 	}
 
 	void Mol::show_basis_env() const {
